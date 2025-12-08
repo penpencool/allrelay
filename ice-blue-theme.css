@@ -1,0 +1,349 @@
+/**
+ * AllRelay Controller - Ice Blue Theme ❄️
+ * Cool, Clean, and Minimal Design
+ * Glass Morphism Effects
+ * Version: 1.0.0
+ */
+
+:root {
+    --bg-color: #e0f2fe;
+    --card-bg: rgba(255, 255, 255, 0.7);
+    --text-main: #0c4a6e;
+    --text-muted: #0369a1;
+    --accent: #0ea5e9;
+    --accent-hover: #0284c7;
+    --ice-blue: #e0f2fe;
+    --sky-blue: #38bdf8;
+    --deep-blue: #075985;
+    --border: rgba(14, 165, 233, 0.2);
+    --shadow: 0 8px 32px rgba(14, 165, 233, 0.15);
+    --success: #06b6d4;
+    --danger: #f43f5e;
+}
+
+body {
+    font-family: 'Inter', 'Segoe UI', sans-serif;
+    background: linear-gradient(135deg, #e0f2fe 0%, #bae6fd 100%);
+    color: var(--text-main);
+    text-align: center;
+    margin: 0;
+    padding: 20px;
+    position: relative;
+}
+
+body::before {
+    content: '';
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-image:
+        radial-gradient(circle at 25% 25%, rgba(56, 189, 248, 0.1) 0%, transparent 50%),
+        radial-gradient(circle at 75% 75%, rgba(14, 165, 233, 0.1) 0%, transparent 50%);
+    pointer-events: none;
+    z-index: -1;
+}
+
+h1 {
+    color: var(--deep-blue);
+    margin-bottom: 10px;
+    text-transform: uppercase;
+    letter-spacing: 4px;
+    font-weight: 800;
+    font-size: 2.6rem;
+    text-shadow: 0 2px 10px rgba(14, 165, 233, 0.3);
+}
+
+.info {
+    color: var(--text-muted);
+    margin-bottom: 30px;
+    font-size: 1.1rem;
+    font-weight: 600;
+    letter-spacing: 2px;
+}
+
+.btn-main {
+    padding: 12px 30px;
+    border: none;
+    border-radius: 12px;
+    cursor: pointer;
+    font-weight: 700;
+    font-size: 1rem;
+    transition: all 0.3s;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    font-family: inherit;
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+}
+
+.btn-all-on {
+    background: linear-gradient(135deg, rgba(6, 182, 212, 0.8) 0%, rgba(14, 165, 233, 0.8) 100%);
+    color: white;
+    box-shadow: 0 4px 15px rgba(6, 182, 212, 0.3);
+}
+
+.btn-all-on:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 6px 20px rgba(6, 182, 212, 0.4);
+}
+
+.btn-all-off {
+    background: linear-gradient(135deg, rgba(148, 163, 184, 0.8) 0%, rgba(100, 116, 139, 0.8) 100%);
+    color: white;
+    box-shadow: 0 4px 15px rgba(100, 116, 139, 0.3);
+}
+
+.btn-save {
+    background: linear-gradient(135deg, rgba(56, 189, 248, 0.8) 0%, rgba(14, 165, 233, 0.8) 100%);
+    color: white;
+    box-shadow: 0 4px 15px rgba(56, 189, 248, 0.3);
+}
+
+.btn-edit {
+    background: linear-gradient(135deg, rgba(14, 165, 233, 0.9) 0%, rgba(2, 132, 199, 0.9) 100%);
+    color: white;
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    width: 56px;
+    height: 56px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.6rem;
+    z-index: 100;
+    box-shadow: 0 8px 25px rgba(14, 165, 233, 0.4);
+    border: 2px solid rgba(255, 255, 255, 0.5);
+    cursor: pointer;
+    transition: all 0.3s;
+    backdrop-filter: blur(10px);
+}
+
+.btn-edit:hover {
+    transform: scale(1.1);
+    box-shadow: 0 12px 35px rgba(14, 165, 233, 0.5);
+}
+
+.btn-edit.active {
+    background: linear-gradient(135deg, rgba(56, 189, 248, 0.9) 0%, rgba(14, 165, 233, 0.9) 100%);
+    animation: icePulse 2s infinite;
+}
+
+@keyframes icePulse {
+
+    0%,
+    100% {
+        box-shadow: 0 0 0 0 rgba(14, 165, 233, 0.7);
+    }
+
+    50% {
+        box-shadow: 0 0 0 15px rgba(14, 165, 233, 0);
+    }
+}
+
+.grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(155px, 1fr));
+    gap: 20px;
+    max-width: 1100px;
+    margin: 0 auto;
+    padding-bottom: 80px;
+}
+
+.card {
+    background: var(--card-bg);
+    padding: 20px;
+    border-radius: 20px;
+    box-shadow: var(--shadow);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    border: 1px solid var(--border);
+    transition: all 0.3s;
+    position: relative;
+    cursor: pointer;
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+}
+
+.card:hover {
+    transform: translateY(-5px);
+    border-color: var(--accent);
+    box-shadow: 0 12px 40px rgba(14, 165, 233, 0.25);
+    background: rgba(255, 255, 255, 0.85);
+}
+
+.card.active {
+    border: 2px solid var(--accent);
+    background: rgba(255, 255, 255, 0.9);
+    box-shadow:
+        0 0 30px rgba(14, 165, 233, 0.4),
+        inset 0 0 20px rgba(14, 165, 233, 0.1);
+}
+
+.card h3 {
+    margin: 10px 0 15px 0;
+    font-size: 1.2rem;
+    color: var(--deep-blue);
+    font-weight: 700;
+}
+
+.switch {
+    position: relative;
+    display: inline-block;
+    width: 50px;
+    height: 26px;
+}
+
+.slider {
+    position: absolute;
+    cursor: pointer;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: rgba(148, 163, 184, 0.5);
+    transition: 0.4s;
+    border-radius: 34px;
+    backdrop-filter: blur(5px);
+}
+
+.slider:before {
+    position: absolute;
+    content: "";
+    height: 20px;
+    width: 20px;
+    left: 3px;
+    bottom: 3px;
+    background: white;
+    transition: 0.4s;
+    border-radius: 50%;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
+}
+
+input:checked+.slider {
+    background: linear-gradient(135deg, var(--accent) 0%, var(--sky-blue) 100%);
+    box-shadow: 0 0 10px rgba(14, 165, 233, 0.5);
+}
+
+input:checked+.slider:before {
+    transform: translateX(24px);
+}
+
+#loader {
+    background: rgba(224, 242, 254, 0.95);
+    backdrop-filter: blur(10px);
+}
+
+.spinner {
+    border: 4px solid rgba(14, 165, 233, 0.2);
+    border-top: 4px solid var(--accent);
+    border-radius: 50%;
+    width: 50px;
+    height: 50px;
+    animation: spin 1s linear infinite;
+}
+
+#mqtt-config,
+#network-config,
+#restart-config,
+#theme-config {
+    display: none;
+    max-width: 500px;
+    margin: 20px auto;
+    padding: 25px;
+    border-top: 3px solid var(--accent);
+    border: 1px solid var(--border);
+    border-radius: 20px;
+    background: var(--card-bg);
+    box-shadow: 0 12px 40px rgba(14, 165, 233, 0.2);
+    backdrop-filter: blur(15px);
+    -webkit-backdrop-filter: blur(15px);
+}
+
+.form-group input,
+.form-group textarea {
+    background: rgba(255, 255, 255, 0.6);
+    color: var(--text-main);
+    border: 1px solid var(--border);
+    border-radius: 10px;
+    backdrop-filter: blur(5px);
+}
+
+.form-group input:focus {
+    border-color: var(--accent);
+    box-shadow: 0 0 0 3px rgba(14, 165, 233, 0.15);
+    background: rgba(255, 255, 255, 0.8);
+}
+
+.status {
+    background: rgba(255, 255, 255, 0.5);
+    border: 1px solid var(--border);
+    border-radius: 10px;
+    backdrop-filter: blur(5px);
+}
+
+.dot.green {
+    background: var(--success);
+    box-shadow: 0 0 10px rgba(6, 182, 212, 0.5);
+}
+
+.enable-row {
+    background: rgba(255, 255, 255, 0.5);
+    border: 1px solid var(--border);
+    border-radius: 10px;
+    backdrop-filter: blur(5px);
+}
+
+#temp-display {
+    position: fixed;
+    top: 20px;
+    right: 20px;
+    background: rgba(255, 255, 255, 0.7);
+    padding: 8px 15px;
+    border-radius: 20px;
+    font-weight: 800;
+    color: var(--deep-blue);
+    box-shadow: 0 4px 15px rgba(14, 165, 233, 0.2);
+    font-size: 1.1rem;
+    z-index: 90;
+    border: 1px solid var(--border);
+    backdrop-filter: blur(10px);
+}
+
+.btn-info {
+    background: linear-gradient(135deg, rgba(99, 102, 241, 0.9) 0%, rgba(79, 70, 229, 0.9) 100%);
+    border: 2px solid rgba(255, 255, 255, 0.5);
+    backdrop-filter: blur(10px);
+}
+
+.modal {
+    background: rgba(0, 0, 0, 0.5);
+    backdrop-filter: blur(10px);
+}
+
+.modal-content {
+    background: var(--card-bg);
+    border: 1px solid var(--border);
+    backdrop-filter: blur(20px);
+    box-shadow: 0 20px 60px rgba(14, 165, 233, 0.3);
+}
+
+.editable-highlight {
+    border: 2px dashed var(--accent);
+    background: rgba(14, 165, 233, 0.1);
+    backdrop-filter: blur(5px);
+}
+
+@media (max-width: 768px) {
+    h1 {
+        font-size: 2rem;
+    }
+
+    .grid {
+        grid-template-columns: repeat(auto-fill, minmax(125px, 1fr));
+    }
+}
