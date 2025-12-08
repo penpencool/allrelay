@@ -1,0 +1,640 @@
+/**
+ * AllRelay Controller - Matrix Circuit Theme 🟢
+ * Matrix Code Rain + Circuit Board Design
+ * Inspired by The Matrix & PCB Aesthetics
+ * Version: 1.0.0
+ */
+
+:root {
+    --bg-color: #000000;
+    --card-bg: #0a0f0a;
+    --text-main: #00ff41;
+    --text-muted: #00aa2b;
+    --accent: #00ff41;
+    --accent-hover: #00dd38;
+    --matrix-green: #00ff41;
+    --dark-green: #003311;
+    --circuit-green: #00aa2b;
+    --border: #00ff41;
+    --shadow: 0 0 20px rgba(0, 255, 65, 0.3);
+    --success: #00ff41;
+    --danger: #ff0055;
+}
+
+body {
+    font-family: 'Courier New', 'Consolas', monospace;
+    background: #000000;
+    color: var(--text-main);
+    text-align: center;
+    margin: 0;
+    padding: 20px;
+    position: relative;
+    overflow-x: hidden;
+}
+
+/* Matrix Rain Background */
+body::before {
+    content: '';
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-image:
+        repeating-linear-gradient(0deg, transparent, transparent 2px, rgba(0, 255, 65, 0.03) 2px, rgba(0, 255, 65, 0.03) 4px),
+        repeating-linear-gradient(90deg, transparent, transparent 2px, rgba(0, 255, 65, 0.03) 2px, rgba(0, 255, 65, 0.03) 4px);
+    background-size: 100% 100%;
+    pointer-events: none;
+    z-index: -2;
+    animation: matrixScroll 20s linear infinite;
+}
+
+@keyframes matrixScroll {
+    0% {
+        background-position: 0 0, 0 0;
+    }
+
+    100% {
+        background-position: 0 100px, 100px 0;
+    }
+}
+
+/* Circuit Lines Background */
+body::after {
+    content: '';
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-image:
+        linear-gradient(90deg, transparent 0%, transparent 48%, rgba(0, 255, 65, 0.1) 49%, rgba(0, 255, 65, 0.1) 51%, transparent 52%, transparent 100%),
+        linear-gradient(0deg, transparent 0%, transparent 48%, rgba(0, 255, 65, 0.1) 49%, rgba(0, 255, 65, 0.1) 51%, transparent 52%, transparent 100%);
+    background-size: 200px 200px;
+    pointer-events: none;
+    z-index: -1;
+    opacity: 0.3;
+}
+
+h1 {
+    color: var(--matrix-green);
+    margin-bottom: 5px;
+    text-transform: uppercase;
+    letter-spacing: 4px;
+    font-weight: 900;
+    font-size: 1.8rem;
+    text-shadow:
+        0 0 10px var(--matrix-green),
+        0 0 20px var(--matrix-green),
+        0 0 30px var(--matrix-green);
+    animation: matrixGlow 2s ease-in-out infinite;
+    font-family: 'Courier New', monospace;
+}
+
+@keyframes matrixGlow {
+
+    0%,
+    100% {
+        text-shadow:
+            0 0 10px var(--matrix-green),
+            0 0 20px var(--matrix-green),
+            0 0 30px var(--matrix-green);
+    }
+
+    50% {
+        text-shadow:
+            0 0 15px var(--matrix-green),
+            0 0 30px var(--matrix-green),
+            0 0 45px var(--matrix-green),
+            0 0 60px var(--matrix-green);
+    }
+}
+
+.info {
+    color: var(--circuit-green);
+    margin-bottom: 25px;
+    font-size: 0.9rem;
+    font-weight: 400;
+    letter-spacing: 2px;
+    text-shadow: 0 0 5px var(--circuit-green);
+}
+
+/* Circuit Board Buttons */
+.controls {
+    margin-bottom: 25px;
+    display: flex;
+    justify-content: center;
+    gap: 15px;
+    flex-wrap: wrap;
+}
+
+.btn-main {
+    padding: 12px 28px;
+    border: 2px solid var(--matrix-green);
+    border-radius: 8px;
+    cursor: pointer;
+    font-weight: 700;
+    font-size: 0.95rem;
+    transition: all 0.3s;
+    text-transform: uppercase;
+    letter-spacing: 1.5px;
+    font-family: 'Courier New', monospace;
+    background: transparent;
+    color: var(--matrix-green);
+    position: relative;
+    overflow: hidden;
+    box-shadow:
+        0 0 10px rgba(0, 255, 65, 0.3),
+        inset 0 0 10px rgba(0, 255, 65, 0.1);
+}
+
+.btn-main::before {
+    content: '';
+    position: absolute;
+    top: -50%;
+    left: -50%;
+    width: 200%;
+    height: 200%;
+    background: radial-gradient(circle, rgba(0, 255, 65, 0.2) 0%, transparent 70%);
+    opacity: 0;
+    transition: opacity 0.3s;
+}
+
+.btn-main:hover::before {
+    opacity: 1;
+    animation: circuitPulse 1s ease-out;
+}
+
+@keyframes circuitPulse {
+    0% {
+        transform: scale(0);
+    }
+
+    100% {
+        transform: scale(1);
+    }
+}
+
+.btn-main:hover {
+    background: rgba(0, 255, 65, 0.1);
+    box-shadow:
+        0 0 20px rgba(0, 255, 65, 0.5),
+        0 0 40px rgba(0, 255, 65, 0.3),
+        inset 0 0 20px rgba(0, 255, 65, 0.2);
+    transform: translateY(-2px);
+}
+
+.btn-main:active {
+    transform: translateY(0);
+}
+
+.btn-all-on {
+    border-color: var(--matrix-green);
+    color: var(--matrix-green);
+}
+
+.btn-all-off {
+    border-color: #666;
+    color: #666;
+    box-shadow:
+        0 0 10px rgba(102, 102, 102, 0.3),
+        inset 0 0 10px rgba(102, 102, 102, 0.1);
+}
+
+.btn-save {
+    border-color: var(--circuit-green);
+    color: var(--circuit-green);
+}
+
+/* Circuit Board Edit Button */
+.btn-edit {
+    background: transparent;
+    color: var(--matrix-green);
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    width: 60px;
+    height: 60px;
+    border-radius: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.8rem;
+    z-index: 100;
+    border: 2px solid var(--matrix-green);
+    cursor: pointer;
+    transition: all 0.3s;
+    clip-path: polygon(0 0, calc(100% - 15px) 0, 100% 15px, 100% 100%, 15px 100%, 0 calc(100% - 15px));
+    box-shadow:
+        0 0 15px rgba(0, 255, 65, 0.4),
+        inset 0 0 15px rgba(0, 255, 65, 0.1);
+}
+
+.btn-edit:hover {
+    background: rgba(0, 255, 65, 0.1);
+    box-shadow:
+        0 0 30px rgba(0, 255, 65, 0.6),
+        0 0 60px rgba(0, 255, 65, 0.3),
+        inset 0 0 30px rgba(0, 255, 65, 0.2);
+}
+
+.btn-edit.active {
+    animation: matrixEditPulse 2s infinite;
+}
+
+@keyframes matrixEditPulse {
+
+    0%,
+    100% {
+        box-shadow:
+            0 0 15px rgba(0, 255, 65, 0.4),
+            inset 0 0 15px rgba(0, 255, 65, 0.1);
+    }
+
+    50% {
+        box-shadow:
+            0 0 30px rgba(0, 255, 65, 0.8),
+            0 0 60px rgba(0, 255, 65, 0.5),
+            inset 0 0 30px rgba(0, 255, 65, 0.3);
+    }
+}
+
+/* Circuit Board Cards */
+.grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+    gap: 18px;
+    max-width: 1100px;
+    margin: 0 auto;
+    padding-bottom: 80px;
+}
+
+.card {
+    background: var(--card-bg);
+    padding: 18px;
+    border-radius: 12px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    border: 2px solid var(--dark-green);
+    transition: all 0.3s;
+    position: relative;
+    cursor: pointer;
+    box-shadow:
+        0 0 10px rgba(0, 255, 65, 0.2),
+        inset 0 0 10px rgba(0, 255, 65, 0.05);
+}
+
+/* Circuit connection lines */
+.card::before {
+    content: '';
+    position: absolute;
+    top: -10px;
+    left: 50%;
+    width: 2px;
+    height: 10px;
+    background: var(--dark-green);
+    transform: translateX(-50%);
+}
+
+.card::after {
+    content: '';
+    position: absolute;
+    top: -10px;
+    left: 50%;
+    width: 6px;
+    height: 6px;
+    background: var(--dark-green);
+    border-radius: 50%;
+    transform: translate(-50%, -3px);
+}
+
+.card:hover {
+    transform: translateY(-5px);
+    border-color: var(--matrix-green);
+    box-shadow:
+        0 0 20px rgba(0, 255, 65, 0.4),
+        0 0 40px rgba(0, 255, 65, 0.2),
+        inset 0 0 20px rgba(0, 255, 65, 0.1);
+}
+
+.card:hover::before,
+.card:hover::after {
+    background: var(--matrix-green);
+    box-shadow: 0 0 10px var(--matrix-green);
+}
+
+.card.active {
+    border: 2px solid var(--matrix-green);
+    background: rgba(0, 255, 65, 0.05);
+    box-shadow:
+        0 0 30px rgba(0, 255, 65, 0.5),
+        0 0 60px rgba(0, 255, 65, 0.3),
+        inset 0 0 30px rgba(0, 255, 65, 0.15);
+    animation: cardActive 2s infinite;
+}
+
+@keyframes cardActive {
+
+    0%,
+    100% {
+        box-shadow:
+            0 0 30px rgba(0, 255, 65, 0.5),
+            0 0 60px rgba(0, 255, 65, 0.3);
+    }
+
+    50% {
+        box-shadow:
+            0 0 40px rgba(0, 255, 65, 0.7),
+            0 0 80px rgba(0, 255, 65, 0.5);
+    }
+}
+
+.card.active::before,
+.card.active::after {
+    background: var(--matrix-green);
+    box-shadow: 0 0 15px var(--matrix-green);
+    animation: connectionPulse 2s infinite;
+}
+
+@keyframes connectionPulse {
+
+    0%,
+    100% {
+        opacity: 1;
+    }
+
+    50% {
+        opacity: 0.5;
+    }
+}
+
+.card h3 {
+    margin: 8px 0 12px 0;
+    font-size: 1.1rem;
+    color: var(--matrix-green);
+    font-weight: 700;
+    text-shadow: 0 0 10px var(--matrix-green);
+    font-family: 'Courier New', monospace;
+}
+
+/* Matrix Toggle Switch */
+.switch {
+    position: relative;
+    display: inline-block;
+    width: 50px;
+    height: 26px;
+}
+
+.switch input {
+    opacity: 0;
+    width: 0;
+    height: 0;
+}
+
+.slider {
+    position: absolute;
+    cursor: pointer;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: #1a1a1a;
+    transition: 0.3s;
+    border-radius: 34px;
+    border: 2px solid var(--dark-green);
+}
+
+.slider:before {
+    position: absolute;
+    content: "";
+    height: 18px;
+    width: 18px;
+    left: 2px;
+    bottom: 2px;
+    background: #333;
+    transition: 0.3s;
+    border-radius: 50%;
+    box-shadow: 0 0 5px rgba(0, 0, 0, 0.5);
+}
+
+input:checked+.slider {
+    background: rgba(0, 255, 65, 0.2);
+    border-color: var(--matrix-green);
+    box-shadow:
+        0 0 10px rgba(0, 255, 65, 0.5),
+        inset 0 0 10px rgba(0, 255, 65, 0.2);
+}
+
+input:checked+.slider:before {
+    transform: translateX(24px);
+    background: var(--matrix-green);
+    box-shadow: 0 0 15px var(--matrix-green);
+}
+
+/* Loader */
+#loader {
+    background: rgba(0, 0, 0, 0.95);
+    backdrop-filter: blur(10px);
+}
+
+.spinner {
+    border: 4px solid var(--dark-green);
+    border-top: 4px solid var(--matrix-green);
+    border-radius: 50%;
+    width: 50px;
+    height: 50px;
+    animation: spin 1s linear infinite;
+    box-shadow: 0 0 20px var(--matrix-green);
+}
+
+@keyframes spin {
+    0% {
+        transform: rotate(0deg);
+    }
+
+    100% {
+        transform: rotate(360deg);
+    }
+}
+
+/* Config Cards */
+#mqtt-config,
+#network-config,
+#restart-config,
+#theme-config {
+    display: none;
+    max-width: 500px;
+    margin: 20px auto;
+    padding: 25px;
+    border-top: 3px solid var(--matrix-green);
+    border: 2px solid var(--dark-green);
+    border-radius: 12px;
+    background: var(--card-bg);
+    box-shadow:
+        0 0 20px rgba(0, 255, 65, 0.3),
+        inset 0 0 20px rgba(0, 255, 65, 0.05);
+}
+
+.form-group label {
+    color: var(--matrix-green);
+    font-weight: 700;
+    text-shadow: 0 0 5px var(--matrix-green);
+    font-family: 'Courier New', monospace;
+}
+
+.form-group input,
+.form-group textarea,
+.form-group select {
+    background: #0a0a0a;
+    color: var(--matrix-green);
+    border: 2px solid var(--dark-green);
+    border-radius: 6px;
+    font-family: 'Courier New', monospace;
+}
+
+.form-group input:focus,
+.form-group textarea:focus,
+.form-group select:focus {
+    border-color: var(--matrix-green);
+    box-shadow:
+        0 0 10px rgba(0, 255, 65, 0.5),
+        inset 0 0 10px rgba(0, 255, 65, 0.1);
+    background: #000;
+}
+
+.status {
+    background: #0a0a0a;
+    border: 2px solid var(--dark-green);
+    border-radius: 8px;
+}
+
+.dot {
+    animation: dotPulse 2s infinite;
+}
+
+@keyframes dotPulse {
+
+    0%,
+    100% {
+        opacity: 1;
+        transform: scale(1);
+    }
+
+    50% {
+        opacity: 0.7;
+        transform: scale(1.2);
+    }
+}
+
+.dot.green {
+    background: var(--matrix-green);
+    box-shadow: 0 0 15px var(--matrix-green);
+}
+
+.enable-row {
+    background: #0a0a0a;
+    border: 2px solid var(--dark-green);
+    border-radius: 8px;
+}
+
+.enable-row span {
+    color: var(--matrix-green);
+    text-shadow: 0 0 5px var(--matrix-green);
+}
+
+#temp-display {
+    position: fixed;
+    top: 20px;
+    right: 20px;
+    background: var(--card-bg);
+    padding: 8px 15px;
+    border-radius: 8px;
+    font-weight: 800;
+    color: var(--matrix-green);
+    box-shadow:
+        0 0 15px rgba(0, 255, 65, 0.3),
+        inset 0 0 10px rgba(0, 255, 65, 0.1);
+    font-size: 1.1rem;
+    z-index: 90;
+    border: 2px solid var(--dark-green);
+    font-family: 'Courier New', monospace;
+    text-shadow: 0 0 10px var(--matrix-green);
+}
+
+.btn-info {
+    background: transparent;
+    color: var(--circuit-green);
+    border: 2px solid var(--circuit-green);
+    border-radius: 0;
+    clip-path: polygon(0 0, calc(100% - 12px) 0, 100% 12px, 100% 100%, 12px 100%, 0 calc(100% - 12px));
+    box-shadow:
+        0 0 15px rgba(0, 170, 43, 0.4),
+        inset 0 0 15px rgba(0, 170, 43, 0.1);
+}
+
+.btn-info:hover {
+    background: rgba(0, 170, 43, 0.1);
+    box-shadow:
+        0 0 30px rgba(0, 170, 43, 0.6),
+        inset 0 0 30px rgba(0, 170, 43, 0.2);
+}
+
+.modal {
+    background: rgba(0, 0, 0, 0.9);
+    backdrop-filter: blur(10px);
+}
+
+.modal-content {
+    background: var(--card-bg);
+    border: 2px solid var(--matrix-green);
+    border-radius: 12px;
+    box-shadow:
+        0 0 30px rgba(0, 255, 65, 0.5),
+        inset 0 0 30px rgba(0, 255, 65, 0.1);
+}
+
+.close-modal {
+    color: var(--matrix-green);
+    text-shadow: 0 0 10px var(--matrix-green);
+}
+
+.editable-highlight {
+    border: 2px dashed var(--matrix-green);
+    background: rgba(0, 255, 65, 0.1);
+    box-shadow: 0 0 10px rgba(0, 255, 65, 0.3);
+}
+
+.eye-btn {
+    background: var(--card-bg);
+    border: 2px solid var(--dark-green);
+    border-radius: 6px;
+    box-shadow: 0 0 10px rgba(0, 255, 65, 0.2);
+}
+
+.eye-btn:hover {
+    background: rgba(0, 255, 65, 0.1);
+    border-color: var(--matrix-green);
+    box-shadow: 0 0 20px rgba(0, 255, 65, 0.5);
+}
+
+.sys-label {
+    color: var(--circuit-green);
+    text-shadow: 0 0 5px var(--circuit-green);
+}
+
+.sys-val {
+    color: var(--matrix-green);
+    text-shadow: 0 0 5px var(--matrix-green);
+}
+
+@media (max-width: 768px) {
+    h1 {
+        font-size: 1.5rem;
+    }
+
+    .grid {
+        grid-template-columns: repeat(auto-fill, minmax(120px, 1fr));
+        gap: 15px;
+    }
+}
