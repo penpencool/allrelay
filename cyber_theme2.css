@@ -1,0 +1,286 @@
+/* Cyber/Futuristic Dark Theme */
+/* Based on provided image reference */
+
+:root {
+    /* Colors */
+    --bg-dark: #12141d;
+    --bg-panel: #1e2029;
+    --primary: #00d2ff;
+    --primary-glow: rgba(0, 210, 255, 0.4);
+    --secondary: #7e8a9c;
+    --success: #00d2ff;
+    /* Using cyan as "On" state to match image */
+    --danger: #ff4757;
+    --text-main: #e0e6ed;
+    --text-muted: #8b9bb4;
+
+    /* Variables for original theme compatibility */
+    --bg: #12141d;
+    --card: #1e2029;
+    --text: #e0e6ed;
+    --accent: #00d2ff;
+    --border: #2c3040;
+
+    /* Shadows for Neumorphism/Depth */
+    --shadow-out: 5px 5px 10px rgba(0, 0, 0, 0.5),
+        -2px -2px 6px rgba(255, 255, 255, 0.05);
+    --shadow-in: inset 3px 3px 6px rgba(0, 0, 0, 0.6),
+        inset -2px -2px 5px rgba(255, 255, 255, 0.05);
+    --glass: rgba(255, 255, 255, 0.03);
+}
+
+body {
+    background-color: var(--bg-dark);
+    background-image:
+        radial-gradient(circle at 50% 0%, #252a3d 0%, transparent 60%),
+        repeating-linear-gradient(45deg, rgba(0, 0, 0, 0.1) 0px, rgba(0, 0, 0, 0.1) 2px, transparent 2px, transparent 4px),
+        linear-gradient(to bottom, #12141d, #0d0f16);
+    color: var(--text-main);
+    font-family: 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+}
+
+/* Card Styling (Relays) */
+.card {
+    background: linear-gradient(145deg, #252836, #1b1d28);
+    box-shadow: var(--shadow-out);
+    border: 1px solid rgba(255, 255, 255, 0.05);
+    border-radius: 16px;
+    color: var(--text-main);
+    transition: all 0.3s ease;
+}
+
+.card:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.5), 0 0 15px rgba(0, 210, 255, 0.1);
+    border-color: rgba(0, 210, 255, 0.3);
+}
+
+/* Active State for Cards (Relay On) */
+.card.active {
+    border-color: var(--primary);
+    box-shadow: 0 0 15px var(--primary-glow), inset 0 0 20px rgba(0, 210, 255, 0.05);
+}
+
+.card h3 {
+    color: var(--text-main);
+    text-shadow: 0 2px 4px rgba(0, 0, 0, 0.5);
+    font-weight: 600;
+    letter-spacing: 0.5px;
+}
+
+/* Switches (Toggle) */
+.switch {
+    width: 50px;
+    height: 26px;
+}
+
+.slider {
+    background: #151720;
+    box-shadow: var(--shadow-in);
+    border-radius: 30px;
+}
+
+.slider:before {
+    background: linear-gradient(145deg, #d0d5e0, #a0aab5);
+    box-shadow: 1px 1px 3px rgba(0, 0, 0, 0.3);
+    width: 20px;
+    height: 20px;
+    left: 4px;
+    bottom: 3px;
+    transition: all 0.3s cubic-bezier(0.4, 0.0, 0.2, 1);
+}
+
+input:checked+.slider {
+    background: #151720;
+    /* Keep track dark */
+}
+
+input:checked+.slider:before {
+    transform: translateX(22px);
+    background: var(--primary);
+    box-shadow: 0 0 10px var(--primary), 0 0 20px var(--primary);
+}
+
+/* Buttons */
+.btn-main,
+.btn-save,
+.btn-all-on,
+.btn-all-off,
+.btn-edit,
+.btn-info,
+.tab {
+    border-radius: 50px;
+    background: linear-gradient(145deg, #2b2e3f, #1e202b);
+    box-shadow: var(--shadow-out);
+    color: var(--text-muted);
+    border: 1px solid rgba(255, 255, 255, 0.02);
+    text-transform: uppercase;
+    font-weight: 600;
+    letter-spacing: 1px;
+    transition: all 0.2s ease;
+}
+
+.btn-main:active,
+.btn-save:active,
+.btn-all-on:active,
+.btn-all-off:active {
+    box-shadow: var(--shadow-in);
+    transform: translateY(1px);
+}
+
+/* Specific Buttons */
+.btn-all-on {
+    color: var(--success);
+}
+
+.btn-all-off {
+    color: var(--danger);
+}
+
+.btn-save {
+    background: linear-gradient(145deg, #2b2e3f, #1e202b);
+    color: #ffd700;
+}
+
+/* Edit Button (Floating) */
+.btn-edit {
+    background: linear-gradient(145deg, #2c3e50, #1a2533);
+    color: var(--primary);
+    width: 50px;
+    height: 50px;
+}
+
+.btn-edit:hover,
+.btn-edit.active {
+    color: #fff;
+    background: var(--primary);
+    box-shadow: 0 0 15px var(--primary-glow);
+    text-shadow: 0 0 5px rgba(255, 255, 255, 0.8);
+}
+
+/* Info Button */
+.btn-info {
+    background: linear-gradient(145deg, #e6e6e6, #ffffff10);
+    /* Glassy/metallic look */
+    color: var(--text-muted);
+}
+
+/* Input Fields (Modal/Settings) */
+input[type="text"],
+input[type="number"],
+select,
+textarea {
+    background: #151720;
+    border: 1px solid #2c3040;
+    border-radius: 8px;
+    padding: 12px;
+    color: var(--primary);
+    box-shadow: var(--shadow-in);
+    outline: none;
+}
+
+input:focus {
+    border-color: var(--primary);
+    box-shadow: 0 0 8px rgba(0, 210, 255, 0.2), var(--shadow-in);
+}
+
+/* Modal Styling */
+.modal-content,
+#sys-content,
+#mqtt-config,
+#network-config,
+#restart-config,
+#theme-config {
+    background: linear-gradient(145deg, #252836, #1b1d28);
+    border: 1px solid rgba(255, 255, 255, 0.05);
+    box-shadow: 0 20px 50px rgba(0, 0, 0, 0.6);
+    border-radius: 16px;
+    color: var(--text-main);
+}
+
+/* Status Dots */
+.dot.green {
+    background: var(--success);
+    box-shadow: 0 0 8px var(--success);
+}
+
+.dot.red {
+    background: var(--danger);
+    box-shadow: 0 0 8px var(--danger);
+}
+
+/* Tabs */
+.tab {
+    background: transparent;
+    box-shadow: none;
+    color: var(--text-muted);
+    border-radius: 12px 12px 0 0;
+    border-bottom: none;
+}
+
+.tab:hover {
+    color: var(--text-main);
+    background: rgba(255, 255, 255, 0.05);
+}
+
+.tab.active {
+    background: linear-gradient(to bottom, #252836, #1b1d28);
+    color: var(--primary);
+    box-shadow: 0 -4px 10px rgba(0, 0, 0, 0.2);
+    border-top: 2px solid var(--primary);
+    z-index: 10;
+}
+
+.tab-bar {
+    border-bottom: 1px solid #2c3040;
+}
+
+/* Range Sliders (if used) */
+input[type=range] {
+    -webkit-appearance: none;
+    width: 100%;
+    background: transparent;
+}
+
+input[type=range]::-webkit-slider-runnable-track {
+    width: 100%;
+    height: 8px;
+    cursor: pointer;
+    background: #151720;
+    border-radius: 5px;
+    box-shadow: var(--shadow-in);
+}
+
+input[type=range]::-webkit-slider-thumb {
+    height: 20px;
+    width: 20px;
+    border-radius: 50%;
+    background: linear-gradient(145deg, #e6e6e6, #b0b0b0);
+    cursor: pointer;
+    -webkit-appearance: none;
+    margin-top: -6px;
+    box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.3);
+}
+
+input[type=range]:focus::-webkit-slider-thumb {
+    background: var(--primary);
+    box-shadow: 0 0 10px var(--primary);
+}
+
+/* Scrollbars */
+::-webkit-scrollbar {
+    width: 10px;
+}
+
+::-webkit-scrollbar-track {
+    background: #12141d;
+}
+
+::-webkit-scrollbar-thumb {
+    background: #2c3040;
+    border-radius: 5px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+    background: #3c4255;
+}
